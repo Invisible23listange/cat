@@ -135,7 +135,7 @@
 
         .subject-title {
             color: var(--text-header);
-            font-size: 1.4rem;
+            font-size: 1.2rem;
             font-weight: 900;
             line-height: 1.2;
             margin-bottom: 0.8rem;
@@ -316,7 +316,7 @@
     </div>
 
     <script>
-        // --- ДАНІ ВИКЛАДАЧІВ (ОНОВЛЕНО НА 2 СЕМЕСТР) ---
+        // --- ДАНІ ВИКЛАДАЧІВ (БАЗОВІ) ---
         const lecturers = {
             masina: { 
                 id: "masina", 
@@ -378,22 +378,6 @@
                 pass: "932944", 
                 link: "https://us02web.zoom.us/j/83235871537?pwd=kG3cEB8LTI78aStf6KLXCDJvIi7LtY.1", 
                 color: "#06b6d4" 
-            },
-            vakalyuk: {
-                id: "vakalyuk",
-                name: "Вакалюк Олена Віталіївна",
-                sub: "Макроекономіка (Семінар)",
-                zoom: "9141306193",
-                pass: "2025",
-                link: "https://zoom.us/j/9141306193?pwd=Y3JjeHNrSXRtZzNVbThMekZGYlBVZz09",
-                color: "#f97316"
-            },
-            self: {
-                id: "self_study",
-                name: "Студент",
-                sub: "Самостійна підготовка",
-                link: "#",
-                color: "#64748b"
             }
         };
 
@@ -404,21 +388,49 @@
             { n: 4, sM: 770, eM: 850, sT: "12:50", eT: "14:10" }
         ];
 
-        // ОНОВЛЕНИЙ РОЗКЛАД
+        // ОНОВЛЕНИЙ РОЗКЛАД З АУДИТОРІЯМИ
         const schedule = {
-            odd: {
-                1: [{n:2,...lecturers.vakalyuk},{n:3,...lecturers.masina},{n:4,...lecturers.kryuchkova}],
-                2: [{n:1, sub:"Семінар: Податки", ...lecturers.osadchuk, id:"sem_tax"},{n:2,...lecturers.osadchuk},{n:3, sub:"Семінар: Бух. облік", ...lecturers.masina, id:"sem_buh"}],
-                3: [{n:1,...lecturers.dobrova},{n:2, sub:"Семінар: Мікроекономіка", ...lecturers.dobrova, id:"sem_micro"},{n:3,...lecturers.vasylevska}],
-                4: [{n:2,...lecturers.rudik},{n:3, sub:"Семінар: Філософія", ...lecturers.ogarenko, id:"sem_phil"},{n:4, sub:"Семінар: Бух. облік", ...lecturers.masina, id:"sem_buh"}],
-                5: [{n:2,...lecturers.self}]
+            even: { // ПАРНА (23.03, 06.04, 20.04, 04.05, 18.05)
+                1: [
+                    {n:2, ...lecturers.kryuchkova, sub: "Макроекономіка (семінар)", room: "407 / 207"}, 
+                    {n:3, ...lecturers.masina, sub: "Теорія бухгалтерського обліку", room: "404"}, 
+                    {n:4, ...lecturers.dobrova, sub: "Мікроекономіка", room: "207"}
+                ],
+                2: [
+                    {n:1, ...lecturers.osadchuk, sub: "Теорія податків та мита (семінар)", room: "404 / 403"}, 
+                    {n:2, ...lecturers.osadchuk, sub: "Теорія податків та мита", room: "404"}
+                ],
+                3: [
+                    {n:4, ...lecturers.osadchuk, sub: "Теорія податків та мита (семінар)", room: "404 / 403"}
+                ],
+                4: [
+                    {n:2, ...lecturers.rudik, sub: "Іноземна мова", room: "404"}, 
+                    {n:3, ...lecturers.ogarenko, sub: "Філософія", room: "29"}, 
+                    {n:4, ...lecturers.masina, sub: "Теорія бухгалтерського обліку (семінар)", room: "404"}
+                ],
+                5: []
             },
-            even: {
-                1: [{n:2,...lecturers.vakalyuk},{n:3,...lecturers.masina},{n:4,...lecturers.dobrova}],
-                2: [{n:1, sub:"Семінар: Податки", ...lecturers.osadchuk, id:"sem_tax"},{n:2,...lecturers.osadchuk}],
-                3: [{n:1,...lecturers.dobrova},{n:2, sub:"Семінар: Мікроекономіка", ...lecturers.dobrova, id:"sem_micro"},{n:3,...lecturers.vasylevska},{n:4, sub:"Семінар: Податки", ...lecturers.osadchuk, id:"sem_tax"}],
-                4: [{n:2,...lecturers.rudik},{n:3,...lecturers.ogarenko},{n:4, sub:"Семінар: Бух. облік", ...lecturers.masina, id:"sem_buh"}],
-                5: [{n:2,...lecturers.self}]
+            odd: { // НЕПАРНА (30.03, 13.04, 27.04, 11.05, 25.05)
+                1: [
+                    {n:2, ...lecturers.kryuchkova, sub: "Макроекономіка (семінар)", room: "407 / 207"}, 
+                    {n:3, ...lecturers.masina, sub: "Теорія бухгалтерського обліку", room: "404"}, 
+                    {n:4, ...lecturers.kryuchkova, sub: "Макроекономіка", room: "207 / 29"}
+                ],
+                2: [
+                    {n:1, ...lecturers.osadchuk, sub: "Теорія податків та мита (семінар)", room: "404 / 403"}, 
+                    {n:2, ...lecturers.osadchuk, sub: "Теорія податків та мита", room: "404"}, 
+                    {n:3, ...lecturers.masina, sub: "Теорія бухгалтерського обліку (семінар)", room: "404"}
+                ],
+                3: [
+                    {n:2, ...lecturers.dobrova, sub: "Мікроекономіка (семінар)", room: "207"}, 
+                    {n:3, ...lecturers.vasylevska, sub: "Захист персональних даних", room: "706"}
+                ],
+                4: [
+                    {n:2, ...lecturers.rudik, sub: "Іноземна мова", room: "404"}, 
+                    {n:3, ...lecturers.ogarenko, sub: "Філософія (семінар)", room: "404"}, 
+                    {n:4, ...lecturers.masina, sub: "Теорія бухгалтерського обліку (семінар)", room: "404"}
+                ],
+                5: []
             }
         };
 
@@ -431,10 +443,10 @@
 
         // --- ФУНКЦІЇ ЯДРА ---
         function getWeekParity(date) {
-            // Базова дата семестру - 23 березня 2026 (Понеділок, непарний)
-            const refDate = new Date(2026, 2, 23); 
-            const diff = Math.floor((date - refDate) / (1000 * 60 * 60 * 24 * 7));
-            return (Math.abs(diff) % 2 === 0) ? 'odd' : 'even';
+            const refDate = new Date(2026, 2, 2); 
+            const timeDiff = date - refDate;
+            const weekDiff = Math.floor(timeDiff / (1000 * 60 * 60 * 24 * 7));
+            return (Math.abs(weekDiff) % 2 === 0) ? 'odd' : 'even';
         }
 
         function render() {
@@ -449,14 +461,14 @@
             const isToday = new Date().toDateString() === viewDate.toDateString();
             
             dateTitle.innerText = viewDate.toLocaleDateString('uk-UA', { day: 'numeric', month: 'long' });
-            dayTitle.innerText = daysUa[dayIdx] + (dayIdx > 0 && dayIdx < 6 ? ` (${parity === 'odd' ? 'Непарний' : 'Парний'})` : "");
+            dayTitle.innerText = daysUa[dayIdx];
 
             container.innerHTML = '';
             const dayData = schedule[parity][dayIdx] || [];
             const now = new Date();
             const curM = now.getHours() * 60 + now.getMinutes();
 
-            totalPairsEl.innerText = dayData.length > 0 ? `Всього пар: ${dayData.length}` : "";
+            totalPairsEl.innerText = dayData.length > 0 ? `Всього пар: ${dayData.length} (${parity === 'even' ? 'Парний тиждень' : 'Непарний тиждень'})` : "";
 
             let activeIdx = dayData.findIndex(p => isToday && curM >= timeSlots[p.n-1].sM && curM <= timeSlots[p.n-1].eM);
             let upcomingIdx = isToday ? dayData.findIndex(p => curM < timeSlots[p.n-1].sM) : -1;
@@ -496,14 +508,15 @@
                         ${next ? '<span class="status-tag">NEXT</span>' : ''}
                         <div class="text-[0.7rem] font-extrabold opacity-60 uppercase mb-1">Пара №${pair.n}</div>
                         <div class="text-sm font-bold opacity-60 mb-2">${slot.sT} — ${slot.eT}</div>
-                        <div class="subject-title text-white">${pair.sub} ${pair.id.includes('sem') ? '<span class="text-xs opacity-50">(Семінар)</span>' : ''}</div>
+                        <div class="subject-title text-white">${pair.sub}</div>
                         ${extra}
                         <div class="lecturer-box">
                             <div class="text-xs font-black mb-1 text-white">${pair.name}</div>
+                            <div class="text-[0.65rem] font-bold opacity-80 uppercase mt-1 accent-text" style="color:${savedColor}">Аудиторія: ${pair.room || '—'}</div>
                             ${pair.zoom ? `<div class="access-info">ID: ${pair.zoom} • Pass: ${pair.pass}</div>` : ''}
                         </div>
                         <div class="join-group">
-                            <a href="${pair.link}" target="_blank" class="join-btn" style="background:${savedColor}">${pair.id === 'self_study' ? 'Матеріали' : 'Увійти'}</a>
+                            <a href="${pair.link}" target="_blank" class="join-btn" style="background:${savedColor}">Увійти</a>
                             <button class="copy-btn" onclick="copyToClipboard('${pair.link}')">
                                 <svg width="22" height="22" fill="${savedColor}" viewBox="0 0 16 16"><path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/><path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3z"/></svg>
                             </button>
@@ -579,10 +592,7 @@
             if(!container) return;
             container.innerHTML = '';
             const uniqueSubs = {};
-            // Об'єднуємо предмети для налаштувань кольору
-            const allItems = [...Object.values(lecturers)];
-            allItems.forEach(l => { if(!uniqueSubs[l.id]) uniqueSubs[l.id] = l; });
-            
+            Object.values(lecturers).forEach(l => { if(!uniqueSubs[l.id]) uniqueSubs[l.id] = l; });
             Object.values(uniqueSubs).forEach(l => {
                 const row = document.createElement('div');
                 row.className = 'sub-color-row';
